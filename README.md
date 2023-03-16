@@ -15,5 +15,5 @@ This is a baby monitoring project using arduino board.
  > connecting wires.
 
 LIBRIARIES USED:
-  > #include<DHT.h>,
+  > #include<dht.h>,
   > #include<Servo.h>
