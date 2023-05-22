@@ -1,5 +1,5 @@
 # SMART-CRADLE
-This is a baby monitoring project using arduino board.
+standalone baby monitoring project using arduino uno.
 
  SENORS USED:
  > sound sensor,
