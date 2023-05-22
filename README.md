@@ -15,5 +15,5 @@ standalone baby monitoring project using arduino uno.
  > connecting wires.
 
 LIBRIARIES USED:
-  > #include<dht.h>,
-  > #include<Servo.h>
+  > dht lib,
+  > servo lib
