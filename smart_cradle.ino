@@ -7,50 +7,50 @@
 Servo Myservo;
 int BUZZER=9;
 dht DHT;
-int i;
 float sensorValue = 0;
 int msvalue=0;
 void setup()
 { 
-  Serial.begin(9600);
-  pinMode(moisturesensor,INPUT);
-  pinMode(2,INPUT);
-  pinMode(SoundSensorPin,INPUT);
-  Myservo.attach(3);//digital pin of arduino
-  pinMode(BUZZER,OUTPUT);
+        Serial.begin(9600);
+        pinMode(moisturesensor,INPUT);
+        pinMode(2,INPUT);
+        pinMode(SoundSensorPin,INPUT);
+        Myservo.attach(3);//digital pin of arduino
+        pinMode(BUZZER,OUTPUT);
 }
 void loop()
-{ while(1)
- {
+{
+ 
   readmoisture();
   readdht();
   readsound();
- if(sensorValue<=325)
-  {  
-      Serial.println("<:::::::::BABY IS CRYING:::::::::>");
-     readservo();
-  }
-  else if(DHT.temperature > 33 && sensorValue<=325 && msvalue<=500)
-  {
-    Serial.println("BABY IS IN DANGER");
-  }
- }
+  if(sensorValue<=325)
+            {  
+              Serial.println("<:::::::::BABY IS CRYING:::::::::>");
+              readservo();
+            }
+            else if(DHT.temperature > 33 && sensorValue<=325 && msvalue<=500)
+            {
+              Serial.println("BABY IS IN DANGER");
+            }
+
+  
 }
 void readmoisture()
 { 
   msvalue=analogRead(moisturesensor);
   Serial.println(msvalue);
   if(msvalue<=500)
-  {   
+    {   
      Serial.println("<:::::::::::PEE DETECTED:::::::::>");
-   for(i=0;i<=21;i++ )
-      {      
-        digitalWrite(BUZZER,HIGH);
-        delay(2000);
-        digitalWrite(BUZZER,LOW);
-        delay(2000);        
-      }
-  }
+          for(int i=0;i<=21;i++ )
+            {      
+                digitalWrite(BUZZER,HIGH);
+                delay(2000);
+                digitalWrite(BUZZER,LOW);
+                delay(2000);        
+            }
+    }
   
 }
 void readdht()
@@ -65,24 +65,22 @@ void readdht()
   Serial.print(DHT.humidity);
   Serial.println(" %");
   if(DHT.temperature > 33) {
-    Serial.print(" <:::::::::::HIGH TEMPERATURE DETECTED:::::::::::>\t");
-    digitalWrite(BUZZER, HIGH);
+        Serial.print(" <:::::::::::HIGH TEMPERATURE DETECTED:::::::::::>\t");
+        digitalWrite(BUZZER, HIGH);
             delay(2000);        
-  } else {
-    digitalWrite(BUZZER, LOW);
+      } 
+  else {
+          digitalWrite(BUZZER, LOW);
             delay(2000);        
-
-  }
-
-
+      }
 }
 void readsound()
 { 
-   for ( i = 0; i <= 4; i++) 
- { 
-   sensorValue = sensorValue + analogRead(SoundSensorPin); 
-   delay(100); 
- } 
+       for (int i = 0; i <= 4; i++) 
+           { 
+               sensorValue = sensorValue + analogRead(SoundSensorPin); 
+               delay(100); 
+           } 
   sensorValue = sensorValue/10.0;
   Serial.println(sensorValue); 
   delay(100); 
@@ -90,15 +88,14 @@ void readsound()
 void readservo()
 {
     int k=21;
-    while(k>=0)
-     {
-      Myservo.write(0);
-      delay(1000);
-      Myservo.write(90);
-      delay(1000);
-      Myservo.write(180);
-      delay(1000);
-      k--;
-     }
-
+          while(k>=0)
+             {
+                Myservo.write(0);
+                delay(1000);
+                Myservo.write(90);
+                delay(1000);
+                Myservo.write(180);
+                delay(1000);
+                k--;
+             }
 }
