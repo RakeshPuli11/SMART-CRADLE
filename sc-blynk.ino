@@ -23,8 +23,8 @@ DHT dht(DHTPIN, DHTTYPE);
 char auth[] = "EQGS6JP8UD4YP7BV";
 
 
-char ssid[] = "V2PS_2.4G";
-char pass[] = "JAI_SREE_RAM";
+char ssid[] = "onepeice_is";
+char pass[] = "nicorobin";
 unsigned long previousMillis = 0;
 const long interval = 60000;  // Interval for sending data to ThingSpeak (milliseconds)
 
